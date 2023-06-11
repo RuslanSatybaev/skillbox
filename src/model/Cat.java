@@ -6,13 +6,17 @@ public class Cat {
     private static final double MAX_WEIGHT = 9000;
     private static int count;
     private static double weightAfterFeed;
-    private final double originWeight;
+    private double originWeight;
     private double weight;
 
     public Cat() {
         weight = 1500.0 + 3000.0 * Math.random();
         originWeight = weight;
         count++;
+    }
+
+    public Cat(Double weight) {
+        this.weight = weight;
     }
 
     public static int getCount() {
