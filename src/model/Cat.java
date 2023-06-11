@@ -1,17 +1,21 @@
 package model;
 
 public class Cat {
+    private static double weightAfterFeed;
     private final double originWeight;
-    private double weight;
-
     private final double minWeight;
     private final double maxWeight;
+    private double weight;
 
     public Cat() {
         weight = 1500.0 + 3000.0 * Math.random();
         originWeight = weight;
         minWeight = 1000.0;
         maxWeight = 9000.0;
+    }
+
+    public static double getTotalWeight() {
+        return weightAfterFeed;
     }
 
     public void meow() {
@@ -21,11 +25,21 @@ public class Cat {
 
     public void feed(Double amount) {
         weight = weight + amount;
+        weightAfterFeed = weight;
         System.out.println(weight);
     }
 
     public void drink(Double amount) {
         weight = weight + amount;
+    }
+
+    public double sumFeed() {
+        return weightAfterFeed - originWeight;
+    }
+
+    public void pee() {
+        weight -= 10;
+        System.out.println(weight);
     }
 
     public Double getWeight() {
