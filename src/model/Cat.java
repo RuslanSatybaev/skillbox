@@ -1,6 +1,7 @@
 package model;
 
 public class Cat {
+    private static int count;
     private static double weightAfterFeed;
     private final double originWeight;
     private final double minWeight;
@@ -12,10 +13,11 @@ public class Cat {
         originWeight = weight;
         minWeight = 1000.0;
         maxWeight = 9000.0;
+        count++;
     }
 
-    public static double getTotalWeight() {
-        return weightAfterFeed;
+    public static int getCount() {
+        return count;
     }
 
     public void meow() {
@@ -48,8 +50,10 @@ public class Cat {
 
     public String getStatus() {
         if (weight < minWeight) {
+            count--;
             return "Dead";
         } else if (weight > maxWeight) {
+            count--;
             return "Exploded";
         } else if (weight > originWeight) {
             return "Sleeping";
