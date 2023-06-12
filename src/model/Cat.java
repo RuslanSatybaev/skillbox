@@ -8,6 +8,7 @@ public class Cat {
     private static double weightAfterFeed;
     private double originWeight;
     private double weight;
+    private Color color;
 
     public Cat() {
         weight = 1500.0 + 3000.0 * Math.random();
@@ -49,6 +50,14 @@ public class Cat {
 
     public Double getWeight() {
         return weight;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
 
     public String getStatus() {
