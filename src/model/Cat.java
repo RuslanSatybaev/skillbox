@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class Cat {
     private static final int COUNT_EYE = 2;
     private static final double MIN_WEIGHT = 1000;
@@ -9,6 +11,7 @@ public class Cat {
     private double originWeight;
     private double weight;
     private Color color;
+    private String name;
 
     public Cat() {
         weight = 1500.0 + 3000.0 * Math.random();
@@ -18,6 +21,12 @@ public class Cat {
 
     public Cat(Double weight) {
         this.weight = weight;
+    }
+
+    public Cat(double weight, Color color, String name) {
+        this.weight = weight;
+        this.color = color;
+        this.name = name;
     }
 
     public static int getCount() {
@@ -60,6 +69,10 @@ public class Cat {
         this.color = color;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public String getStatus() {
         if (weight < MIN_WEIGHT) {
             count--;
@@ -72,5 +85,18 @@ public class Cat {
         } else {
             return "Playing";
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cat cat = (Cat) o;
+        return Double.compare(cat.originWeight, originWeight) == 0 && Double.compare(cat.weight, weight) == 0 && color == cat.color && Objects.equals(name, cat.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(weight, color, name);
     }
 }
